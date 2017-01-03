@@ -44,10 +44,10 @@ namespace RealTimeQuiz
             loggerFactory.AddConsole();
 
 
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
+            //}
 
             app.UseStaticFiles();
 
