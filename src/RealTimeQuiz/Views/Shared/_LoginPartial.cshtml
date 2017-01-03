@@ -1,0 +1,17 @@
+﻿<ul class="nav navbar-nav navbar-right">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="navbar-text">
+            Hi @User.FindFirst("name").Value!
+        </li>
+        <li>
+            <a asp-action="SignOut" asp-controller="Account">Sign out</a>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a asp-action="SignIn" asp-controller="Account">Sign in</a>
+        </li>
+    }
+</ul>
