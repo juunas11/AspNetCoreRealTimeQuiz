@@ -1,3 +1,87 @@
-﻿<div class="jumbotron">
-    <h1>Front page</h1>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="Quiz">
+<head>
+    <base href="/">
+    <meta name="viewport" content="width=device-width"/>
+    <title>Real time quizes</title>
+    <environment Names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap.css"/>
+        <link rel="stylesheet" href="~/css/styles.css"/>
+    </environment>
+    <environment Names="Production">
+        <link rel="stylesheet"
+              href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"/>
+        <link rel="stylesheet"
+              href="~/css/styles.min.css"
+              asp-append-version="true"/>
+    </environment>
+</head>
+<body>
+@*<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Azure AD Demo</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+            </ul>
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </div>
+</div>*@
+<div class="container body-content">
+    <div ng-view></div>
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Joonas Westlin</p>
+    </footer>
 </div>
+<environment Names="Development">
+    <script src="/lib/jquery-2.2.0.js"></script>
+    <script src="/lib/bootstrap.js"></script>
+    <script src="/lib/angular.js"></script>
+    <script src="/lib/angular-route.js"></script>
+    <script src="/lib/adal.js"></script>
+    <script src="/lib/adal-angular.js"></script>
+    <script src="/lib/jquery.signalr-2.2.1.js"></script>
+    <script src="/signalr/js"></script>
+    <script src="/lib/signalr-hub.js"></script>
+    <script asp-src-include="/app/**/*.js"></script>
+</environment>
+<environment Names="Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="/lib/jquery-2.2.0.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+            asp-fallback-src="/lib/bootstrap.min.js"
+            asp-fallback-test="window.jQuery.fn.alert.Constructor">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"
+            asp-fallback-src="/lib/angular.min.js"
+            asp-fallback-test="window.angular">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"
+            asp-fallback-src="/lib/angular-route.min.js">
+    </script>
+    <script src="/app.min.js" asp-append-version="true"></script>
+</environment>
+
+</body>
+</html>

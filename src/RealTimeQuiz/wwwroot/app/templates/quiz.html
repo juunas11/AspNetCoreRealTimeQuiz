@@ -1,0 +1,30 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div ng-show="waitingForQuestion" class="text-center">
+            <h2>Waiting for quiz start...</h2>
+        </div>
+        <div ng-show="question">
+            <h2>{{question.text}}</h2>
+            <div class="radio" ng-repeat="choice in question.choices" ng-show="!question.multipleCorrectAnswers">
+                <label>
+                    <input name="answer" type="radio" ng-model="selectedChoice" value="{{choice.id}}" />
+                    {{choice.text}}
+                </label>
+            </div>
+            <div class="checkbox" ng-repeat="choice in question.choices" ng-show="question.multipleCorrectAnswers">
+                <label>
+                    <input type="checkbox" ng-model="selectedChoice" value="{{choice.id}}" />
+                    {{choice.text}}
+                </label>
+            </div>
+            <button type="button" ng-click="submitAnswer()" class="btn btn-primary">Submit</button>
+            <span>{{question.timeLeftSeconds}} seconds left</span>
+        </div>
+
+        <div ng-show="quizOver">
+            <h2>Quiz results</h2>
+
+        </div>
+    </div>
+</div>
+
